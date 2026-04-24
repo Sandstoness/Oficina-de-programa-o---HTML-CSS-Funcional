@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="shortcut icon" href="—Pngtree—apple vector icon_3755609.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      font-family: "DM Sans", system-ui, sans-serif;
+      background-color: #0d1117;
+      background-image:
+        linear-gradient(145deg, rgba(13, 17, 23, 0.82) 0%, rgba(30, 41, 59, 0.75) 100%),
+        url("https://www.cnet.com/a/img/resize/c7559b848acde3e80a599e6a3ebeaab24fe1c6fc/hub/2022/10/05/4c404a9b-860c-47c7-8c7e-be68ff8cf56d/gettyimages-1243562806-apple-store-logo.jpg?auto=webp&fit=crop&height=675&width=1200");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 36px 36px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.45),
+    }
+
+    .login-box h2 {
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #f8fafc;
+      text-align: center;
+    }
+
+    .login-box .subtitle {
+      margin: 0 0 28px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(248, 250, 252, 0.65);
+      text-align: center;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(248, 250, 252, 0.85);
+      letter-spacing: 0.02em;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 14px 16px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #0f172a;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+    }
+
+    input:hover {
+      background: #fff;
+    }
+
+    input:focus {
+      border-color: #34d399;
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.35);
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #022c22;
+      background: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #10b981 100%);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 8px 28px rgba(16, 185, 129, 0.55);
+      transform: translateY(-1px);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 12px rgba(16, 185, 129, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h2>Entrar</h2>
+    <p class="subtitle">Acesse sua conta para continuar</p>
+
+    <form action="loja.html">
+      <div class="field">
+        <label for="user">Usuário</label>
+        <input id="user" type="text" placeholder="Digite seu usuário" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="pass">Senha</label>
+        <input id="pass" type="password" placeholder="Digite sua senha" autocomplete="current-password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+</body>
+</html>

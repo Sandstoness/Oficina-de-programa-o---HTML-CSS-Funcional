@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja — Phone Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "DM Sans", system-ui, sans-serif;
+            background: linear-gradient(180deg, #eef2f7 0%, #e2e8f0 45%, #f1f5f9 100%);
+            color: #0f172a;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            padding: 18px 24px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        }
+
+        .promo {
+            margin: 0;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            color: #78350f;
+            background: linear-gradient(90deg, #fef3c7 0%, #fde68a 50%, #fef3c7 100%);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.35);
+        }
+
+        .products {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 20px 48px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            text-align: center;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            box-shadow:
+                0 4px 6px -1px rgba(15, 23, 42, 0.06),
+                0 12px 24px -8px rgba(15, 23, 42, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:not(.card--indisponivel):hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 12px 24px -6px rgba(15, 23, 42, 0.15),
+                0 0 0 1px rgba(59, 130, 246, 0.12);
+        }
+
+        .card--indisponivel {
+            opacity: 0.92;
+        }
+
+        .card__media {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            background: #f1f5f9;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card--indisponivel .card__media img {
+            filter: grayscale(0.85) brightness(0.92);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgba(15, 23, 42, 0.75);
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+
+        .card--indisponivel .badge {
+            background: rgba(220, 38, 38, 0.9);
+        }
+
+        .card__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 18px 18px 20px;
+            gap: 4px;
+        }
+
+        .card__body h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+        }
+
+        .old {
+            margin: 0;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .price {
+            margin: 4px 0 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #dc2626;
+            letter-spacing: -0.02em;
+        }
+
+        .card--indisponivel .price {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .card__actions {
+            margin-top: auto;
+            padding-top: 14px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, opacity 0.2s;
+        }
+
+        .btn--buy {
+            color: #fff;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn--buy:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            transform: translateY(-1px);
+        }
+
+        .btn--buy:active {
+            transform: translateY(0);
+        }
+
+        .btn--disabled {
+            color: #64748b;
+            background: #e2e8f0;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn--disabled:hover {
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>🍏 Loja Iphonk barato</header>
+
+<p class="promo">⚠️ Super promoção — até <strong>97% off</strong> hoje</p>
+
+<div class="products">
+
+    <article class="card">
+        <div class="card__media">
+            <img src="image copy.png" alt="iPhone 18">
+        </div>
+        <div class="card__body">
+            <h3>iPhone 18</h3>
+            <p class="old">R$ 18.000</p>
+            <p class="price">R$ 119,99</p>
+            <div class="card__actions">
+                <button type="button" class="btn btn--buy" onclick="window.location.href='descricao.html'">Comprar</button>
+            </div>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card__media">
+            <img src="image.png" alt="iPhone 13">
+        </div>
+        <div class="card__body">
+            <h3>iPhone 13</h3>
+            <p class="old">R$ 9.200</p>
+            <p class="price">R$ 200,99</p>
+            <div class="card__actions">
+                <button type="button" class="btn btn--buy" onclick="window.location.href='descricao2.html'">Comprar</button>
+            </div>
+        </div>
+    </article>
+
+    <article class="card card--indisponivel">
+        <div class="card__media">
+            <span class="badge">Não à venda</span>
+            <img src="img2.png" alt="iPhone 12">
+        </div>
+        <div class="card__body">
+            <h3>iPhone 12</h3>
+            <p class="old">R$ 3.000</p>
+            <p class="price">Indisponível</p>
+            <div class="card__actions">
+                <button type="button" class="btn btn--disabled" disabled aria-disabled="true">Fora do catálogo</button>
+            </div>
+        </div>
+    </article>
+
+    <article class="card card--indisponivel">
+        <div class="card__media">
+            <span class="badge">Não à venda</span>
+            <img src="img3.png" alt="iPhone 11">
+        </div>
+        <div class="card__body">
+            <h3>iPhone 11</h3>
+            <p class="old">R$ 2.800</p>
+            <p class="price">Indisponível</p>
+            <div class="card__actions">
+                <button type="button" class="btn btn--disabled" disabled aria-disabled="true">Fora do catálogo</button>
+            </div>
+        </div>
+    </article>
+
+</div>
+
+</body>
+</html>
